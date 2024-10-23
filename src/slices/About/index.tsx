@@ -40,6 +40,7 @@ const About = ({ slice }: AboutProps): JSX.Element => {
           whileInView={{ x: 0, scale: 1 }}
           viewport={{ once: true }}
           className="aspect-square rounded-full w-2/3 md:w-1/3 xl:w-full"
+          alt="avatar"
           src={photo.url ? photo.url : "/images/default_photo.jpg"}
         />
       </div>

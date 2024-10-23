@@ -14,7 +14,7 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  const { header, subtitle } = slice.primary;
+  const { header, subtitle, description } = slice.primary;
 
   return (
     <section
@@ -31,12 +31,6 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         transition={{ duration: 1.5 }}
         className="absolute inset-0 w-full h-full object-cover z-10 brightness-50"
       />
-      {/* <Image
-        src="/images/hero_bg.jpg"
-        alt="Hero background"
-        fill
-        className="inset-0 object-cover z-10 brightness-50"
-      /> */}
       <div className="absolute text-center z-20 font-lexend text-primary-foreground space-y-5">
         <motion.h1
           initial={{ y: -50, opacity: 0 }}
@@ -54,6 +48,14 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         >
           {subtitle}
         </motion.h2>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="text-2xl text-primary-foreground/80"
+        >
+          {description}
+        </motion.p>
       </div>
       <div className="absolute z-30 bottom-2 flex items-center justify-center">
         <Scroll />
