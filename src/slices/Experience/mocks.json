@@ -1,0 +1,81 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"experience": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"employment_type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "easy",
+									"type": "Text"
+								}
+							],
+							[
+								"company",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "remain",
+									"type": "Text"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "yellow",
+									"type": "Text"
+								}
+							],
+							[
+								"time_period",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "age",
+									"type": "Text"
+								}
+							],
+							[
+								"achievements",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Laboris sint sit qui aliquip in cillum duis ipsum irure nulla."
+											}
+										}
+									]
+								}
+							],
+							[
+								"tabtitle",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "sugar",
+									"type": "Text"
+								}
+							],
+							[
+								"role",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "prove",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

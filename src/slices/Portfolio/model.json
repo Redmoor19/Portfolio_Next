@@ -1,0 +1,77 @@
+{
+  "id": "portfolio",
+  "type": "SharedSlice",
+  "name": "Portfolio",
+  "description": "Portfolio",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "projects": {
+          "type": "Group",
+          "config": {
+            "label": "projects",
+            "repeat": true,
+            "fields": {
+              "thumbnail": {
+                "type": "Image",
+                "config": {
+                  "label": "thumbnail",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "description",
+                  "placeholder": ""
+                }
+              },
+              "packages": {
+                "type": "Text",
+                "config": {
+                  "label": "packages",
+                  "placeholder": ""
+                }
+              },
+              "git": {
+                "type": "Link",
+                "config": {
+                  "label": "git",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "live": {
+                "type": "Link",
+                "config": {
+                  "label": "live",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

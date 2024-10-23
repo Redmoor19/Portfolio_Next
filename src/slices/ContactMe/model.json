@@ -1,0 +1,16 @@
+{
+  "id": "contact_me",
+  "type": "SharedSlice",
+  "name": "ContactMe",
+  "description": "ContactMe",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}
