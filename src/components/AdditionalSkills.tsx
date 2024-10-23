@@ -1,11 +1,12 @@
 import { GroupField } from "@prismicio/client";
 import * as motion from "framer-motion/client";
 
+import { AnimatePresence } from "framer-motion";
+
 import {
   Simplify,
   SkillsSliceDefaultPrimaryFrontendItem,
-} from "../../../prismicio-types";
-import { AnimatePresence } from "framer-motion";
+} from "../../prismicio-types";
 import IconCard from "./IconCard";
 
 type AdditionalSkillsProps = {
