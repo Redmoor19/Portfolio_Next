@@ -90,7 +90,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea placeholder="" {...field} />
               </FormControl>
