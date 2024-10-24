@@ -11,7 +11,7 @@ export default async function Page() {
   const page = await client.getSingle("home");
 
   return (
-    <main className="relative">
+    <main className="relative overflow-hidden">
       <Nav />
       <SliceZone slices={page.data.slices} components={components} />
       <Toaster />

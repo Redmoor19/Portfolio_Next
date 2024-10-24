@@ -27,27 +27,39 @@ const links = [
 
 const Nav = () => {
   const [activeSection, setActiveSection] = useState("");
-  console.log(activeSection);
+
+  const updateNavigation = () => {
+    const sections = document.querySelectorAll("section");
+    const halfWindowHeight = window.innerHeight / 2;
+    const scrollTop = window.scrollY;
+
+    const newActiveSection = Array.from(sections).reduce((closest, section) => {
+      const offsetTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.id;
+
+      const cond1 = offsetTop - halfWindowHeight < scrollTop;
+      const cond2 = offsetTop + sectionHeight - halfWindowHeight > scrollTop;
+
+      if (cond1 && cond2) {
+        return sectionId;
+      }
+      return closest;
+    }, activeSection);
+    console.log(activeSection, newActiveSection);
+
+    if (newActiveSection !== activeSection) {
+      setActiveSection(newActiveSection);
+    }
+  };
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    setActiveSection("home");
+    updateNavigation();
+    window.addEventListener("scroll", updateNavigation);
 
     return () => {
-      sections.forEach((section) => observer.unobserve(section));
+      window.removeEventListener("scroll", updateNavigation);
     };
   }, []);
 

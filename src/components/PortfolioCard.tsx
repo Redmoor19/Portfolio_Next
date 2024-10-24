@@ -1,27 +1,33 @@
+import { motion, useScroll } from "framer-motion";
 import { Content } from "@prismicio/client";
 import { Simplify } from "../../prismicio-types";
 import Image from "next/image";
 import { PrismicNextLink } from "@prismicio/next";
+import { useRef } from "react";
 
 type PortfolioCardProps = {
   item: Simplify<Content.PortfolioSliceDefaultPrimaryProjectsItem>;
+  i: number;
 };
 
-const PortfolioCard = ({ item }: PortfolioCardProps) => {
+const PortfolioCard = ({ item, i }: PortfolioCardProps) => {
+  //const { scrollYProgress } = useScroll();
+  //console.log(scrollYProgress);
+  const odd = i % 2 === 0;
   const badges = item.packages?.split(", ");
 
   return (
     <div>
+      <h3 className="text-2xl py-3 font-lexend text-slate-100">{item.title}</h3>
       {item.thumbnail.url && item.thumbnail.alt && (
         <Image
           src={item.thumbnail.url}
           alt={item.thumbnail.alt}
           className="aspect-video w-full mb-3 object-cover"
-          width={500}
-          height={300}
+          width={1000}
+          height={600}
         />
       )}
-      <h3 className="text-xl font-lexend text-slate-100">{item.title}</h3>
       <div className="text-slate-200 font-lexend flex justify-between gap-3 py-2">
         {item.git.link_type === "Web" && (
           <PrismicNextLink field={item.git} className="group relative">

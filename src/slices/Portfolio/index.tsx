@@ -16,7 +16,7 @@ const Portfolio = ({ slice }: PortfolioProps): JSX.Element => {
   return (
     <section
       id="portfolio"
-      className=" bg-slate-800 py-20"
+      className="bg-slate-800 py-20"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -24,9 +24,9 @@ const Portfolio = ({ slice }: PortfolioProps): JSX.Element => {
         <h2 className="text-slate-100 text-4xl pb-7 text-center font-lexend">
           Portfolio
         </h2>
-        <div className="grid grid-cols-3 gap-10">
-          {projects.map((item) => (
-            <PortfolioCard item={item} key={item.title} />
+        <div className="flex flex-col">
+          {projects.map((item, i) => (
+            <PortfolioCard item={item} key={item.title} i={i} />
           ))}
         </div>
       </div>

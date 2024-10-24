@@ -16,7 +16,7 @@ const About = ({ slice }: AboutProps): JSX.Element => {
   return (
     <section
       id="about"
-      className="py-20 bg-slate-800 overflow-hidden"
+      className="py-20 bg-slate-800"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
