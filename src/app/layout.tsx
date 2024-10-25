@@ -18,10 +18,8 @@ export default function RootLayout({
       <link rel="icon" href="/images/logo.svg" sizes="any" />
       <title>Danila Mandrabura</title>
       <body>
-        <PrlxProvider>
-          {children}
-          <SpeedInsights />
-        </PrlxProvider>
+        <PrlxProvider>{children}</PrlxProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
