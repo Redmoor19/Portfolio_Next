@@ -15,7 +15,7 @@ type AdditionalSkillsProps = {
 
 const AdditionalSkills = ({ skills }: AdditionalSkillsProps) => {
   return (
-    <div className="flex gap-3 flex-wrap justify-center">
+    <div className="grid grid-cols-3 md:grid-cols-6 lg:flex gap-3 flex-wrap justify-center">
       <AnimatePresence>
         {skills.map((item) => (
           <motion.div

@@ -24,7 +24,7 @@ const Portfolio = ({ slice }: PortfolioProps): JSX.Element => {
         <h2 className="text-slate-100 text-4xl pb-7 text-center font-lexend">
           Portfolio
         </h2>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
           {projects.map((item) => (
             <PortfolioCard item={item} key={item.title} />
           ))}
