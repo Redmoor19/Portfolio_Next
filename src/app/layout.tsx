@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PrlxProvider from "@/Providers/PrlxProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" href="/images/logo.svg" sizes="any" />
       <title>Danila Mandrabura</title>
-      <body>{children}</body>
+      <body>
+        <PrlxProvider>{children}</PrlxProvider>
+      </body>
     </html>
   );
 }

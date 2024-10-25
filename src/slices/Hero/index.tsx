@@ -24,7 +24,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <motion.img
-        src="/images/hero_bg-min.jpg"
+        src="/images/hero_bg.jpg"
         alt="Hero background"
         initial={{ opacity: 0.1 }}
         animate={{ opacity: 1 }}

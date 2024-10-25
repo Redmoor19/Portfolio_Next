@@ -30,6 +30,7 @@ export interface HomeDocumentDataLinksItem {
 }
 
 type HomeDocumentDataSlicesSlice =
+  | ParallaxSlice
   | ContactMeSlice
   | PortfolioSlice
   | ExperienceSlice
@@ -396,6 +397,51 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Primary content in *Parallax → Default → Primary*
+ */
+export interface ParallaxSliceDefaultPrimary {
+  /**
+   * image field in *Parallax → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Parallax Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ParallaxSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Parallax*
+ */
+type ParallaxSliceVariation = ParallaxSliceDefault;
+
+/**
+ * Parallax Shared Slice
+ *
+ * - **API ID**: `parallax`
+ * - **Description**: Parallax
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxSlice = prismic.SharedSlice<
+  "parallax",
+  ParallaxSliceVariation
+>;
+
+/**
  * Item in *Portfolio → Default → Primary → projects*
  */
 export interface PortfolioSliceDefaultPrimaryProjectsItem {
@@ -725,6 +771,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ParallaxSlice,
+      ParallaxSliceDefaultPrimary,
+      ParallaxSliceVariation,
+      ParallaxSliceDefault,
       PortfolioSlice,
       PortfolioSliceDefaultPrimaryProjectsItem,
       PortfolioSliceDefaultPrimary,

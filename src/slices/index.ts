@@ -7,6 +7,7 @@ export const components = {
   contact_me: dynamic(() => import("./ContactMe")),
   experience: dynamic(() => import("./Experience")),
   hero: dynamic(() => import("./Hero")),
+  parallax: dynamic(() => import("./Parallax")),
   portfolio: dynamic(() => import("./Portfolio")),
   skills: dynamic(() => import("./Skills")),
 };

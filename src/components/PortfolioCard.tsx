@@ -1,19 +1,13 @@
-import { motion, useScroll } from "framer-motion";
 import { Content } from "@prismicio/client";
 import { Simplify } from "../../prismicio-types";
 import Image from "next/image";
 import { PrismicNextLink } from "@prismicio/next";
-import { useRef } from "react";
 
 type PortfolioCardProps = {
   item: Simplify<Content.PortfolioSliceDefaultPrimaryProjectsItem>;
-  i: number;
 };
 
-const PortfolioCard = ({ item, i }: PortfolioCardProps) => {
-  //const { scrollYProgress } = useScroll();
-  //console.log(scrollYProgress);
-  const odd = i % 2 === 0;
+const PortfolioCard = ({ item }: PortfolioCardProps) => {
   const badges = item.packages?.split(", ");
 
   return (

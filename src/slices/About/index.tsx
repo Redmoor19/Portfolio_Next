@@ -16,11 +16,11 @@ const About = ({ slice }: AboutProps): JSX.Element => {
   return (
     <section
       id="about"
-      className="py-20 bg-slate-800"
+      className="bg-slate-800 py-10"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="container flex flex-col-reverse h-full xl:grid grid-cols-[4fr_2fr] gap-16 justify-center items-center">
+      <div className="container min-h-screen flex flex-col-reverse xl:grid grid-cols-[4fr_2fr] gap-16 justify-center items-center">
         <motion.div
           initial={{ x: -100 }}
           whileInView={{ x: 0 }}

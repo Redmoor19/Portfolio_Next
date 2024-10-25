@@ -16,11 +16,11 @@ const Skills = ({ slice }: SkillsProps): JSX.Element => {
   return (
     <section
       id="skills"
-      className="bg-slate-800 py-20"
+      className="bg-slate-800 py-10"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="container">
+      <div className="container min-h-screen">
         <h2 className="text-slate-100 text-4xl pb-7 text-center font-lexend">
           Skills
         </h2>
@@ -30,7 +30,7 @@ const Skills = ({ slice }: SkillsProps): JSX.Element => {
           <SkillsGroup skills={databases} title="Database" />
         </div>
         <div className="h-1 rounded bg-slate-600 my-14" />
-        <h2 className="font-lexend text-2xl text-slate-100 text-center">
+        <h2 className="font-lexend text-2xl text-slate-100 pb-4 text-center">
           Additional skills
         </h2>
         <AdditionalSkills skills={additional_skills} />
