@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "./globals.css";
 import PrlxProvider from "@/Providers/PrlxProvider";
@@ -17,7 +18,10 @@ export default function RootLayout({
       <link rel="icon" href="/images/logo.svg" sizes="any" />
       <title>Danila Mandrabura</title>
       <body>
-        <PrlxProvider>{children}</PrlxProvider>
+        <PrlxProvider>
+          {children}
+          <SpeedInsights />
+        </PrlxProvider>
       </body>
     </html>
   );
