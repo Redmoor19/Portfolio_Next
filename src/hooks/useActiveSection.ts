@@ -19,35 +19,31 @@ const useActiveSection = () => {
     } as T;
   };
 
-  useEffect(() => {
-    const updateNavigation = () => {
-      const sections = document.querySelectorAll("section");
-      const halfWindowHeight = window.innerHeight / 2;
-      const scrollTop = window.scrollY;
+  const updateNavigation = () => {
+    const sections = document.querySelectorAll("section");
+    const halfWindowHeight = window.innerHeight / 2;
+    const scrollTop = window.scrollY;
 
-      const newActiveSection = Array.from(sections).reduce(
-        (closest, section) => {
-          const offsetTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.id;
+    const newActiveSection = Array.from(sections).reduce((closest, section) => {
+      const offsetTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.id;
 
-          const cond1 = offsetTop - halfWindowHeight < scrollTop;
-          const cond2 =
-            offsetTop + sectionHeight - halfWindowHeight > scrollTop;
+      const cond1 = offsetTop - halfWindowHeight < scrollTop;
+      const cond2 = offsetTop + sectionHeight - halfWindowHeight > scrollTop;
 
-          if (cond1 && cond2) {
-            return sectionId;
-          }
-          return closest;
-        },
-        activeSection
-      );
-
-      if (newActiveSection !== activeSection) {
-        setActiveSection(newActiveSection);
+      if (cond1 && cond2) {
+        return sectionId;
       }
-    };
+      return closest;
+    }, activeSection);
 
+    if (newActiveSection !== activeSection) {
+      setActiveSection(newActiveSection);
+    }
+  };
+
+  useEffect(() => {
     const debouncedUpdateNavigation = debounce(updateNavigation, 100);
 
     updateNavigation();
