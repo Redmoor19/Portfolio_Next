@@ -74,7 +74,7 @@ const Nav = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`flex gap-2 items-center text-slate-100 duration-200 ${isActive ? "bg-slate-700 p-2 rounded" : ""}`}
+                  className={`flex gap-2 items-center text-slate-100 duration-200 ${isActive ? "bg-slate-700 p-2 rounded-full" : ""}`}
                 >
                   <link.icon size={30} />
                   {isActive && (
