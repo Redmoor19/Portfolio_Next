@@ -1,6 +1,8 @@
 import { Content } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import * as motion from "framer-motion/client";
+import Image from "next/image";
 
 /**
  * Props for `About`.
@@ -11,7 +13,7 @@ export type AboutProps = SliceComponentProps<Content.AboutSlice>;
  * Component for "About" Slices.
  */
 const About = ({ slice }: AboutProps): JSX.Element => {
-  const { photo, title, subtitle, description } = slice.primary;
+  const { photo, title, subtitle, description, links } = slice.primary;
 
   return (
     <section
@@ -33,6 +35,20 @@ const About = ({ slice }: AboutProps): JSX.Element => {
           <div className="font-grotesk text-slate-200">
             <PrismicRichText field={description} />
           </div>
+          <ul className="flex gap-7">
+            {links.map((link, i) => (
+              <li key={i}>
+                <PrismicNextLink field={link.link} className="text-slate-100">
+                  <Image
+                    alt={link.icon.alt ?? ""}
+                    src={link.icon.url ?? ""}
+                    width={40}
+                    height={40}
+                  />
+                </PrismicNextLink>
+              </li>
+            ))}
+          </ul>
         </motion.div>
         <motion.img
           initial={{ scale: 0.5 }}

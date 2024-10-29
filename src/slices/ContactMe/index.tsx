@@ -23,7 +23,7 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
           Contact Me
         </h2>
         <div className="flex justify-center items-center mb-20 md:mb-0">
-          <ContactForm className="w-3/4 lg:w-1/2 font-lexend" />
+          <ContactForm className="w-full lg:w-1/2 font-lexend" />
         </div>
       </div>
     </section>

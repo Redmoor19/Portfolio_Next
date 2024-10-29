@@ -4,7 +4,6 @@ import { Content, GroupField, KeyTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-
 import { Simplify } from "../../prismicio-types";
 
 type TabsProps = {
@@ -28,7 +27,7 @@ const Tabs = ({ experience }: TabsProps) => {
   }
 
   return (
-    <div className="grid grid-cols-[1fr_3fr] gap-7 w-full lg:w-2/3">
+    <div className="grid grid-cols-[1fr_3fr] gap-3 lg:gap-7 w-full lg:w-2/3">
       <ul className="flex flex-col gap-3 text-slate-400">
         {experience.map((item) => (
           <li

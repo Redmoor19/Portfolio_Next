@@ -3,6 +3,22 @@ import { useEffect, useState } from "react";
 const useActiveSection = () => {
   const [activeSection, setActiveSection] = useState("");
 
+  const debounce = <T extends (...args: any[]) => void>(
+    func: T,
+    delay: number
+  ): T => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    return function (this: unknown, ...args: Parameters<T>): void {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    } as T;
+  };
+
   const updateNavigation = () => {
     const sections = document.querySelectorAll("section");
     const halfWindowHeight = window.innerHeight / 2;
@@ -27,12 +43,14 @@ const useActiveSection = () => {
     }
   };
 
+  const debouncedUpdateNavigation = debounce(updateNavigation, 100);
+
   useEffect(() => {
     updateNavigation();
-    window.addEventListener("scroll", updateNavigation);
+    window.addEventListener("scroll", debouncedUpdateNavigation);
 
     return () => {
-      window.removeEventListener("scroll", updateNavigation);
+      window.removeEventListener("scroll", debouncedUpdateNavigation);
     };
   }, []);
 

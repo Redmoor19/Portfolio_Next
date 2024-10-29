@@ -1,32 +1,26 @@
 import { NextResponse, NextRequest } from "next/server";
 import nodemailer from "nodemailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 export async function POST(request: NextRequest) {
-  const username = process.env.EMAIL_USERNAME;
-  const password = process.env.EMAIL_PASSWORD;
-  const myEmail = process.env.PERSONAL_EMAIL;
-
   const transporter = nodemailer.createTransport({
-    host: "smtp.mailersend.net",
-    port: 587,
-    tls: {
-      ciphers: "SSLv3",
-      rejectUnauthorized: false,
-    },
+    host: process.env.MAIL_HOST,
+    port: process.env.MAIL_PORT,
+    secure: process.env.NODE_ENV !== "development",
     auth: {
-      user: username,
-      pass: password,
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASSWORD,
     },
-  });
+  } as SMTPTransport.Options);
 
   const { name, email, message } = await request.json();
 
   try {
     await transporter.sendMail({
-      from: username,
-      to: myEmail,
+      from: process.env.MAIL_USER,
+      to: process.env.MY_EMAIL,
       subject: `${name} message`,
-      html: `   
+      html: `
               <p>Name: ${name} </p>
               <p>Email: ${email} </p>
               <p>Message: ${message} </p>

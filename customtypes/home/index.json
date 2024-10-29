@@ -6,33 +6,6 @@
   "status": true,
   "json": {
     "Main": {
-      "links": {
-        "type": "Group",
-        "config": {
-          "label": "Links",
-          "repeat": true,
-          "fields": {
-            "icon": {
-              "type": "Image",
-              "config": {
-                "label": "icon",
-                "constraint": {},
-                "thumbnails": []
-              }
-            },
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "link",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "select": null,
-                "allowText": true
-              }
-            }
-          }
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

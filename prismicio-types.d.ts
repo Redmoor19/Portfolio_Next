@@ -4,31 +4,6 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-/**
- * Item in *home → Links*
- */
-export interface HomeDocumentDataLinksItem {
-  /**
-   * icon field in *home → Links*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.links[].icon
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  icon: prismic.ImageField<never>;
-
-  /**
-   * link field in *home → Links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.links[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-}
-
 type HomeDocumentDataSlicesSlice =
   | ParallaxSlice
   | ContactMeSlice
@@ -42,17 +17,6 @@ type HomeDocumentDataSlicesSlice =
  * Content for home documents
  */
 interface HomeDocumentData {
-  /**
-   * Links field in *home*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.links[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  links: prismic.GroupField<Simplify<HomeDocumentDataLinksItem>>;
-
   /**
    * Slice Zone field in *home*
    *
@@ -111,6 +75,31 @@ export type HomeDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument;
 
 /**
+ * Item in *About → Default → Primary → Links*
+ */
+export interface AboutSliceDefaultPrimaryLinksItem {
+  /**
+   * icon field in *About → Default → Primary → Links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.links[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * link field in *About → Default → Primary → Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
  * Primary content in *About → Default → Primary*
  */
 export interface AboutSliceDefaultPrimary {
@@ -153,6 +142,16 @@ export interface AboutSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
+  /**
+   * Links field in *About → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<AboutSliceDefaultPrimaryLinksItem>>;
 }
 
 /**
@@ -752,10 +751,10 @@ declare module "@prismicio/client" {
     export type {
       HomeDocument,
       HomeDocumentData,
-      HomeDocumentDataLinksItem,
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSlice,
+      AboutSliceDefaultPrimaryLinksItem,
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
