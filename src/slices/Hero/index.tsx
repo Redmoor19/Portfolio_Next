@@ -36,7 +36,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-5xl"
+          className="text-5xl px-1"
         >
           {header}
         </motion.h1>
@@ -44,7 +44,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-3xl"
+          className="text-3xl px-1"
         >
           {subtitle}
         </motion.h2>
@@ -52,7 +52,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-2xl text-primary-foreground/80"
+          className="text-2xl text-primary-foreground/80 px-1"
         >
           {description}
         </motion.p>

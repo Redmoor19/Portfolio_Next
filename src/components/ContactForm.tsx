@@ -15,6 +15,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(1, "Please enter your name").trim(),
@@ -28,6 +29,7 @@ type ContactFormProps = {
 
 const ContactForm = ({ className }: ContactFormProps) => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,6 +40,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
     const response = await fetch("/api/contact", {
       method: "post",
       headers: {
@@ -59,6 +62,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
       });
       form.reset();
     }
+    setIsLoading(false);
   }
 
   return (
@@ -74,7 +78,7 @@ const ContactForm = ({ className }: ContactFormProps) => {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="John Doe" {...field} />
+                <Input disabled={isLoading} placeholder="John Doe" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -87,7 +91,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="john@example.com" {...field} />
+                <Input
+                  disabled={isLoading}
+                  placeholder="john@example.com"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -100,15 +108,25 @@ const ContactForm = ({ className }: ContactFormProps) => {
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
-                <Textarea placeholder="" {...field} />
+                <Textarea disabled={isLoading} placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
+        <Button disabled={isLoading} className="w-full" type="submit">
           Submit
         </Button>
+        <p className="text-slate-400 text-center font-lexend">
+          see{" "}
+          <a
+            className="text-slate-50 underline"
+            href="https://www.termsfeed.com/live/b83fe0b1-4f00-46b2-adde-e85b2fca8bf8"
+            target="_blank"
+          >
+            privacy policy
+          </a>
+        </p>
       </form>
     </Form>
   );

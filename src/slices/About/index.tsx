@@ -35,7 +35,7 @@ const About = ({ slice }: AboutProps): JSX.Element => {
           <div className="font-grotesk text-slate-200">
             <PrismicRichText field={description} />
           </div>
-          <ul className="flex gap-7">
+          <ul className="flex gap-7 justify-center xl:justify-start">
             {links.map((link, i) => (
               <li key={i}>
                 <PrismicNextLink field={link.link} className="text-slate-100">
