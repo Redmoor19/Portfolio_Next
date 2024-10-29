@@ -1,24 +1,32 @@
 "use client";
 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronsDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Scroll = () => {
-  const [isOver, setIsOver] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const animationProps = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.5 },
+  };
+
   return (
     <div
-      onMouseEnter={() => setIsOver(true)}
-      onMouseLeave={() => setIsOver(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="w-32 h-40 flex items-center justify-center"
     >
-      {!isOver && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+      {!isHovered && !isTouchDevice ? (
+        <motion.div {...animationProps}>
           <DotLottieReact
             className="h-32"
             src="/icons/scroll.lottie"
@@ -26,14 +34,11 @@ const Scroll = () => {
             autoplay
           />
         </motion.div>
-      )}
-      {isOver && (
+      ) : (
         <motion.a
+          {...animationProps}
           className="text-white text-center flex w-full h-full flex-col items-center justify-center"
           href="#about"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
         >
           <span className="text-xl">Learn more</span>
           <ChevronsDown size={40} />

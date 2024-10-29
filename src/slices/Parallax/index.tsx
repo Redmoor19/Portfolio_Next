@@ -2,7 +2,6 @@
 
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 /**

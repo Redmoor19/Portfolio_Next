@@ -22,8 +22,8 @@ const About = ({ slice }: AboutProps): JSX.Element => {
     >
       <div className="container min-h-screen flex flex-col-reverse xl:grid grid-cols-[4fr_2fr] gap-16 justify-center items-center">
         <motion.div
-          initial={{ x: -100 }}
-          whileInView={{ x: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
           className="space-y-5 text-center xl:text-left"
@@ -35,9 +35,9 @@ const About = ({ slice }: AboutProps): JSX.Element => {
           </div>
         </motion.div>
         <motion.img
-          initial={{ x: 300, scale: 0.5 }}
+          initial={{ scale: 0.5 }}
           transition={{ duration: 1 }}
-          whileInView={{ x: 0, scale: 1 }}
+          whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           className="aspect-square rounded-full w-2/3 md:w-1/3 xl:w-full"
           alt="avatar"
