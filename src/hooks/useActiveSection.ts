@@ -19,33 +19,37 @@ const useActiveSection = () => {
     } as T;
   };
 
-  const updateNavigation = () => {
-    const sections = document.querySelectorAll("section");
-    const halfWindowHeight = window.innerHeight / 2;
-    const scrollTop = window.scrollY;
-
-    const newActiveSection = Array.from(sections).reduce((closest, section) => {
-      const offsetTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.id;
-
-      const cond1 = offsetTop - halfWindowHeight < scrollTop;
-      const cond2 = offsetTop + sectionHeight - halfWindowHeight > scrollTop;
-
-      if (cond1 && cond2) {
-        return sectionId;
-      }
-      return closest;
-    }, activeSection);
-
-    if (newActiveSection !== activeSection) {
-      setActiveSection(newActiveSection);
-    }
-  };
-
-  const debouncedUpdateNavigation = debounce(updateNavigation, 100);
-
   useEffect(() => {
+    const updateNavigation = () => {
+      const sections = document.querySelectorAll("section");
+      const halfWindowHeight = window.innerHeight / 2;
+      const scrollTop = window.scrollY;
+
+      const newActiveSection = Array.from(sections).reduce(
+        (closest, section) => {
+          const offsetTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.id;
+
+          const cond1 = offsetTop - halfWindowHeight < scrollTop;
+          const cond2 =
+            offsetTop + sectionHeight - halfWindowHeight > scrollTop;
+
+          if (cond1 && cond2) {
+            return sectionId;
+          }
+          return closest;
+        },
+        activeSection
+      );
+
+      if (newActiveSection !== activeSection) {
+        setActiveSection(newActiveSection);
+      }
+    };
+
+    const debouncedUpdateNavigation = debounce(updateNavigation, 100);
+
     updateNavigation();
     window.addEventListener("scroll", debouncedUpdateNavigation);
 
