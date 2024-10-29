@@ -46,10 +46,18 @@ const ContactForm = ({ className }: ContactFormProps) => {
       body: JSON.stringify(values),
     });
 
+    if (!response.ok) {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong. Please try again",
+      });
+    }
+
     if (response.ok) {
       toast({
         title: "Email successfully send",
       });
+      form.reset();
     }
   }
 

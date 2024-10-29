@@ -32,6 +32,9 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.log(error);
-    NextResponse.json({ message: "COULD NOT SEND MESSAGE" }, { status: 500 });
+    return NextResponse.json(
+      { message: "COULD NOT SEND MESSAGE" },
+      { status: 500 }
+    );
   }
 }
